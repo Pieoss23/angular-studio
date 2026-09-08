@@ -1,0 +1,16 @@
+<div class="layout">
+  <aside class="sidebar">
+    <a routerLink="/" class="brand">Angular Studio</a>
+    <nav>
+      @for (ex of exercises; track ex.id) {
+        <a [routerLink]="'/' + ex.id" routerLinkActive="active">
+          <span class="num">{{ ex.done ? '✓' : ex.n }}</span>
+          <span class="lbl">{{ ex.title }}</span>
+        </a>
+      }
+    </nav>
+  </aside>
+  <main class="content">
+    <router-outlet />
+  </main>
+</div>
