@@ -178,6 +178,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'DOM diretto dopo il render: afterRenderEffect',
     topic: 'Performance',
     summary: 'Disegno su canvas reattivo dopo il render, host binding sul componente.',
+    done: true,
   },
   {
     id: 'ex20',
@@ -186,6 +187,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'State management: uno store con signal',
     topic: 'Architettura',
     summary: 'Servizio singleton con signal privati, computed selector, update immutabili.',
+    done: true,
   },
   {
     id: 'ex21',

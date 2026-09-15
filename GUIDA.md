@@ -33,8 +33,8 @@ Progetto di studio per imparare le ultime novità di Angular (v21: standalone, z
 | 16 | animazioni native (animate.enter/leave) | ✅ 3/3 — vedi REPORT/ex16 |
 | 17 | testing con TestBed | ✅ 4/4 (2 correzioni) — vedi REPORT/ex17 |
 | 18 | router: resolver funzionali | ✅ 3/3 (1 correzione) — vedi REPORT/ex18 |
-| 19 | afterRenderEffect + host binding | ⬜ da fare |
-| 20 | state management con signal store | ⬜ da fare |
+| 19 | afterRenderEffect + host binding | ✅ 3/3 — vedi REPORT/ex19 |
+| 20 | state management con signal store | ✅ 4/4 — vedi REPORT/ex20 |
 | 21 | pipe custom (pure vs impure) | ⬜ da fare |
 | 22 | direttiva strutturale custom (TemplateRef/ViewContainerRef) | ⬜ da fare |
 | 23 | environment providers + provideAppInitializer | ⬜ da fare |

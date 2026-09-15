@@ -6,8 +6,21 @@ import { BarChart } from './bar-chart';
   selector: 'app-ex19-afterrender-host-bindings',
   imports: [ExerciseShell, BarChart],
   template: `
-    <app-exercise-shell n="19" topic="Performance" folder="ex19-afterrender-host-bindings"
+    <app-exercise-shell n="19" topic="Performance" folder="ex19-afterrender-host-bindings" completed
       title="DOM diretto dopo il render: afterRenderEffect">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 3/3</h3>
+        <ul>
+          <li><code>afterRenderEffect()</code> nel constructor: gira dopo ogni render, quando
+            <code>viewChild.required('canvas')</code> è già popolato — leggere
+            <code>this.values()</code> dentro la callback la rende reattiva, si ri-disegna da sola
+            ad ogni cambio dell'input, senza <code>ngOnChanges</code>.</li>
+          <li>l'host binding statico (<code>[attr.aria-label]</code> nel decoratore) resta
+            invariato indipendentemente dai dati: dimostra che <code>host</code> non serve solo
+            per binding dinamici legati a eventi.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>

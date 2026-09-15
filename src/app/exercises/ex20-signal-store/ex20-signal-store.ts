@@ -13,8 +13,23 @@ const CATALOG = [
   selector: 'app-ex20-signal-store',
   imports: [ExerciseShell, CartView],
   template: `
-    <app-exercise-shell n="20" topic="Architettura" folder="ex20-signal-store"
+    <app-exercise-shell n="20" topic="Architettura" folder="ex20-signal-store" completed
       title="State management: uno store con signal">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 4/4</h3>
+        <ul>
+          <li><code>add()</code>: <code>.some()</code> per controllare se l'articolo esiste già,
+            poi <code>.map()</code> per incrementarne la <code>qty</code> immutabilmente (nuovo
+            array, nuovo oggetto item) o <code>[...items, nuovo]</code> se non c'è.</li>
+          <li><code>remove()</code>: <code>.map()</code> decrementa la <code>qty</code>
+            dell'articolo giusto, poi <code>.filter(i =&gt; i.qty &gt; 0)</code> elimina le righe
+            arrivate a zero — due passaggi immutabili in sequenza invece di una singola mutazione
+            in place.</li>
+          <li><code>total</code>/<code>count</code> restano <code>computed</code>: si aggiornano
+            da soli ad ogni <code>add</code>/<code>remove</code>, nessun ricalcolo manuale.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>
