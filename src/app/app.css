@@ -31,12 +31,32 @@
 .sidebar nav a:hover { background: var(--panel-2); color: var(--text); }
 .sidebar nav a.active { background: var(--panel-2); color: var(--text); border-left: 3px solid var(--accent); }
 .sidebar nav a .num {
+  position: relative;
   flex: none;
   width: 22px; height: 22px;
   display: grid; place-items: center;
   border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 12px;
+  overflow: hidden;
+}
+/* esercizio completato: il numero resta visibile, la spunta compare solo in hover */
+.sidebar nav a.done .num {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+.sidebar nav a.done .num::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--panel-2);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.sidebar nav a.done:hover .num::after {
+  opacity: 1;
 }
 .sidebar nav a .lbl { font-size: 13px; }
 

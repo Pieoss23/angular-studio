@@ -10,6 +10,17 @@ import { Stepper } from './stepper';
       title="model(): two-way binding con i signal">
 
       <div consegna>
+        <h3>Argomento</h3>
+        <p>
+          <code>model()</code> dichiara in una riga un <strong>input + output
+          <code>xChange</code></strong>, ed è ciò che abilita la sintassi two-way
+          <code>[(x)]</code> (l'unione di <code>[x]</code> e <code>(xChange)</code>). Dentro il
+          componente si comporta come un <code>WritableSignal</code>: <code>x()</code> legge,
+          <code>x.set()</code> / <code>x.update()</code> scrivono <em>ed emettono</em>. Sostituisce
+          il vecchio pattern <code>&#64;Input() value</code> + <code>&#64;Output() valueChange</code>.
+          Serve quando il componente possiede un valore che anche il genitore deve poter leggere
+          e scrivere (form control custom, slider, stepper).
+        </p>
         <h3>Concetti</h3>
         <ul>
           <li><code>model&lt;T&gt;(default)</code> crea un input <strong>e</strong> un output <code>xChange</code> → abilita <code>[(x)]</code></li>

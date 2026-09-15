@@ -10,6 +10,16 @@ import { Rating } from './rating';
       title="Signal inputs & outputs">
 
       <div consegna>
+        <h3>Argomento</h3>
+        <p>
+          <code>input()</code> e <code>output()</code> sono la versione signal-based della
+          comunicazione tra componenti, in sostituzione dei decoratori <code>&#64;Input()</code> /
+          <code>&#64;Output()</code>. Un <code>input()</code> è un <strong>signal read-only</strong>
+          che il compilatore collega al binding del genitore: lo leggi con <code>x()</code> e ci
+          reagisci con <code>computed</code> / <code>effect</code>. Un <code>output()</code> è un
+          emettitore di eventi (<code>.emit(v)</code>), senza <code>EventEmitter</code>. Supporta
+          <code>required</code>, <code>alias</code> e <code>transform</code> in modo tipizzato.
+        </p>
         <h3>Concetti</h3>
         <ul>
           <li><code>input&lt;T&gt;(default)</code> → input opzionale, ritorna un <code>Signal&lt;T&gt;</code></li>

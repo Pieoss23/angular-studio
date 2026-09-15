@@ -9,6 +9,15 @@ import { ExerciseShell } from '../../shared/exercise-shell';
       title="Signals: signal / computed / effect">
 
       <div consegna>
+        <h3>Argomento</h3>
+        <p>
+          I <strong>signal</strong> sono il modello di reattività di Angular: contenitori di
+          valore che sanno chi li legge. Quando cambiano, solo le parti di UI (e i calcoli) che
+          dipendono davvero da loro vengono aggiornati — senza <code>zone.js</code>, senza
+          <code>NgZone</code>, senza confronto dell'intero albero. <code>computed</code> deriva
+          valori (memoizzati, read-only), <code>effect</code> esegue side-effect quando le sue
+          dipendenze cambiano. È la base di tutto il resto del framework moderno.
+        </p>
         <h3>Concetti</h3>
         <ul>
           <li><code>signal()</code> per lo stato locale reattivo; <code>.set()</code> / <code>.update()</code></li>

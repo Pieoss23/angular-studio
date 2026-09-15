@@ -3,8 +3,8 @@
     <a routerLink="/" class="brand">Angular Studio</a>
     <nav>
       @for (ex of exercises; track ex.id) {
-        <a [routerLink]="'/' + ex.id" routerLinkActive="active">
-          <span class="num">{{ ex.done ? '✓' : ex.n }}</span>
+        <a [routerLink]="'/' + ex.id" routerLinkActive="active" [class.done]="ex.done">
+          <span class="num">{{ ex.n }}</span>
           <span class="lbl">{{ ex.title }}</span>
         </a>
       }

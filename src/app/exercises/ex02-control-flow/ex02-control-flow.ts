@@ -16,6 +16,16 @@ interface Task {
       title="Nuovo control flow: @if / @for / @switch">
 
       <div consegna>
+        <h3>Argomento</h3>
+        <p>
+          Dal 2024 Angular ha un <strong>control flow nativo nel template</strong>
+          (<code>&#64;if</code>, <code>&#64;for</code>, <code>&#64;switch</code>): è sintassi
+          riconosciuta dal compilatore, non direttive. Vantaggi: niente import di
+          <code>CommonModule</code>, bundle più piccolo, type-narrowing migliore, e
+          <code>&#64;for</code> con <code>track</code> obbligatorio che rende esplicita
+          l'identità degli elementi. <code>*ngIf</code> / <code>*ngFor</code> / <code>ngSwitch</code>
+          sono deprecati.
+        </p>
         <h3>Concetti</h3>
         <ul>
           <li><code>&#64;if / &#64;else if / &#64;else</code></li>
