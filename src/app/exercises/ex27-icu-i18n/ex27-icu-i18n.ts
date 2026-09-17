@@ -5,8 +5,26 @@ import { ExerciseShell } from '../../shared/exercise-shell';
   selector: 'app-ex27-icu-i18n',
   imports: [ExerciseShell],
   template: `
-    <app-exercise-shell n="27" topic="Template" folder="ex27-icu-i18n"
+    <app-exercise-shell n="27" topic="Template" folder="ex27-icu-i18n" completed
       title="Espressioni ICU: plural e select nel template">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 4/4 (1 problema di infrastruttura risolto)</h3>
+        <ul>
+          <li>la sintassi <code>plural</code>/<code>select</code> scritta direttamente come testo
+            di un elemento (non dentro un'interpolazione) era corretta fin dal primo tentativo.</li>
+          <li><strong>scoperta</strong>: Angular compila qualunque espressione ICU usando la
+            funzione globale <code>$localize</code>, fornita da <code>&#64;angular/localize</code> —
+            un pacchetto che questo progetto non aveva mai installato. Il codice compilava e
+            passava il controllo dei template, ma a runtime lanciava
+            <code>ReferenceError: $localize is not defined</code> non appena il componente
+            veniva istanziato.</li>
+          <li>fix: installato <code>&#64;angular/localize</code> e registrato come polyfill in
+            <code>angular.json</code> (<code>"polyfills": ["&#64;angular/localize/init"]</code>) —
+            non come import diretto in <code>main.ts</code>, che Angular sconsiglia
+            esplicitamente.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>
@@ -75,7 +93,7 @@ import { ExerciseShell } from '../../shared/exercise-shell';
           <button class="btn" (click)="decrement()">-</button>
           <span data-testid="count-icu">
             <!-- TODO(27.1): scrivi qui l'espressione ICU plural su count(), vedi README -->
-            &#123; espressione ICU plural da scrivere qui &#125;
+            {count(), plural, =0{nessuna notifica} =1{una notifica} other {{{count()}} notifiche}}
           </span>
           <button class="btn" (click)="count.update(c => c + 1)">+</button>
         </div>
@@ -91,7 +109,8 @@ import { ExerciseShell } from '../../shared/exercise-shell';
           ruolo:
           <span data-testid="role-icu">
             <!-- TODO(27.2): scrivi qui l'espressione ICU select su role(), vedi README -->
-            &#123; espressione ICU select da scrivere qui &#125;
+            {role(), select, admin {Amministratore} editor {Redattore} other {Utente}}
+            
           </span>
         </p>
       </div>

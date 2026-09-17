@@ -205,5 +205,11 @@ export const routes: Routes = [
         (m) => m.Ex30DynamicComponents,
       ),
   },
+  {
+    path: 'progetto-ricette',
+    loadChildren: () =>
+      import('./project-recipes/project-recipes.routes').then((m) => m.PROJECT_RECIPES_ROUTES),
+  },
+
   { path: '**', redirectTo: '' },
 ];

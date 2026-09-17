@@ -12,6 +12,11 @@ export class SelectivePreloadStrategy implements PreloadingStrategy {
   //    `[preload] ${route.path}` e ritorna load() (che scarica il chunk)
   //  - altrimenti: ritorna of(null) (non precarica nulla per questa rotta)
   preload(route: Route, load: () => Observable<unknown>): Observable<unknown> {
+    if(route.data?.['preload']) {
+      console.log(`[preload] ${route.path}`)
+      return load();
+    }
+
     return of(null);
   }
 }

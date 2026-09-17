@@ -2,13 +2,24 @@
   <aside class="sidebar">
     <a routerLink="/" class="brand">Angular Studio</a>
     <nav>
+      <a routerLink="/progetto-ricette" routerLinkActive="active" class="project-link">
+        <span class="num">🍳</span>
+        <span class="lbl">Progetto: Libreria ricette</span>
+      </a>
+    </nav>
+    <div class="nav-sep"></div>
+
+    <nav>
       @for (ex of exercises; track ex.id) {
-        <a [routerLink]="'/' + ex.id" routerLinkActive="active" [class.done]="ex.done">
-          <span class="num">{{ ex.n }}</span>
-          <span class="lbl">{{ ex.title }}</span>
-        </a>
+      <a [routerLink]="'/' + ex.id" routerLinkActive="active" [class.done]="ex.done">
+        <span class="num">{{ ex.n }}</span>
+        <span class="lbl">{{ ex.title }}</span>
+      </a>
       }
     </nav>
+
+
+
   </aside>
   <main class="content">
     <router-outlet />

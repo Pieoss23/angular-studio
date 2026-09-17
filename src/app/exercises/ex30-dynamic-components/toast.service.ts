@@ -20,5 +20,16 @@ export class ToastService {
   //  4. const remove = () => ref.destroy();
   //  5. const timer = setTimeout(remove, 3000);
   //  6. ref.instance.dismissed.subscribe(() => { clearTimeout(timer); remove(); });
-  show(message: string, kind: 'info' | 'error' = 'info'): void {}
+  show(message: string, kind: 'info' | 'error' = 'info'): void {
+    if(!this.host) return;
+    const ref = this.host.createComponent(ToastItem);
+    ref.setInput('message', message);
+    ref.setInput('kind', kind);
+    const remove = () => ref.destroy();
+    const timer = setTimeout(remove, 2000);
+    ref.instance.dismissed.subscribe(() => {
+      clearTimeout(timer);
+      remove();
+    });
+  }
 }

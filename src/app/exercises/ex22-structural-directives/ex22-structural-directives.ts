@@ -7,8 +7,22 @@ import { RepeatDirective } from './repeat.directive';
   selector: 'app-ex22-structural-directives',
   imports: [ExerciseShell, UnlessDirective, RepeatDirective],
   template: `
-    <app-exercise-shell n="22" topic="Componenti" folder="ex22-structural-directives"
+    <app-exercise-shell n="22" topic="Componenti" folder="ex22-structural-directives" completed
       title="Direttiva strutturale custom: TemplateRef + ViewContainerRef">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 4/4 (bonus incluso)</h3>
+        <ul>
+          <li><code>UnlessDirective</code>: un flag <code>hasView</code> locale (fuori dal signal)
+            evita di ricreare/rimuovere la vista quando lo stato "creata/non creata" non è
+            davvero cambiato — l'effect si esegue ad ogni cambio di <code>appUnless()</code>, ma
+            agisce sul DOM solo nei due casi di transizione reali.</li>
+          <li><code>RepeatDirective</code> (bonus): <code>clear()</code> seguito da un ciclo di
+            <code>createEmbeddedView(templateRef, &#123; $implicit: i, index: i &#125;)</code> —
+            ricostruisce tutte le viste ad ogni cambio di <code>count()</code>, passando un
+            context diverso a ciascuna.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>

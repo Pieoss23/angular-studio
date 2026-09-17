@@ -16,5 +16,13 @@ export class AppTitleStrategy extends TitleStrategy {
   //    prende il `title` della rotta attiva più profonda)
   //  - se routeTitle esiste ed è diverso da SUFFIX: this.titleService.setTitle(`${routeTitle} · ${SUFFIX}`)
   //  - altrimenti: this.titleService.setTitle(SUFFIX)
-  override updateTitle(snapshot: RouterStateSnapshot): void {}
+  override updateTitle(snapshot: RouterStateSnapshot): void {
+    const routeTitle = this.buildTitle(snapshot);
+    if(routeTitle && routeTitle !== SUFFIX) {
+      this.titleService.setTitle(`${routeTitle} · ${SUFFIX}`)
+    } else{
+      this.titleService.setTitle(SUFFIX);
+    }
+
+  }
 }

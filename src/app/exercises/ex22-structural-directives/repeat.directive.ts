@@ -24,6 +24,9 @@ export class RepeatDirective {
       // TODO(22.2 - bonus): crea `count` embedded view, una per indice da 0
       // a count-1, passando il context giusto a ciascuna:
       // this.viewContainerRef.createEmbeddedView(this.templateRef, { $implicit: i, index: i });
+      for (let i = 0; i < count; i++) {
+        this.viewContainerRef.createEmbeddedView(this.templateRef, { $implicit: i, index: i });
+      }
     });
   }
 }

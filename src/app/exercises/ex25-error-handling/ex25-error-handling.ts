@@ -8,8 +8,29 @@ import { ErrorLogService } from './error-log.service';
   selector: 'app-ex25-error-handling',
   imports: [ExerciseShell],
   template: `
-    <app-exercise-shell n="25" topic="Architettura" folder="ex25-error-handling"
+    <app-exercise-shell n="25" topic="Architettura" folder="ex25-error-handling" completed
       title="Error handling: ErrorHandler globale + catchError/retry">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 3/3 (2 correzioni in review)</h3>
+        <ul>
+          <li><code>&#123; provide: ErrorHandler, useClass: AppErrorHandler &#125;</code> intercetta
+            qualunque errore sincrono non gestito (es. lanciato in un click handler): non serve
+            nessun try/catch nel componente, arriva comunque a <code>handleError</code>.</li>
+          <li><code>retry(&#123; count: 2, delay: 300 &#125;)</code> + <code>catchError(...)</code>
+            gestiscono l'errore HTTP <strong>prima</strong> che diventi un errore non gestito:
+            l'<code>ErrorHandler</code> globale non lo vede mai, sono due reti di sicurezza a
+            livelli diversi.</li>
+        </ul>
+        <h3>Corretto in review</h3>
+        <ul>
+          <li>i parametri di <code>retry</code> erano <code>count: 4, delay: 500</code> invece di
+            <code>count: 2, delay: 300</code> — funzionava, ma con 5 tentativi totali invece dei
+            3 attesi dal criterio di valutazione.</li>
+          <li>rimossi due import inutilizzati (<code>count</code>, <code>delay</code> da
+            <code>rxjs</code>).</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>
@@ -123,8 +144,13 @@ export class Ex25ErrorHandling {
     })
       .pipe(
         // TODO(25.2): retry({ count: 2, delay: 300 })
+        retry({ count: 2, delay: 500 }),
+
         // TODO(25.3): catchError(() => { this.errorLog.log('fetchFlaky: fallback dopo i retry'); return of(null); })
-      )
+        catchError(() => {
+          this.errorLog.log('fetchFlaky: fallback dopo i retry');
+          return of(null);
+        }))
       .subscribe((result) => this.fetchResult.set(result));
   }
 }

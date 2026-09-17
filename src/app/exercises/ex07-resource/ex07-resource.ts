@@ -43,9 +43,18 @@ export function fakeFetchUser(id: number): Promise<User> {
             <li><code>reload()</code> rifà la fetch con gli stessi <code>params</code> (utile per un bottone "aggiorna").</li>
             <li>L'ordine dei rami conta: <code>isLoading</code> → <code>error</code> → <code>hasValue</code>. <code>isLoading()</code> è <code>true</code> anche durante i reload.</li>
           </ul>
-          <h3>Nit (non a punteggio)</h3>
+          <h3>Bug trovato dopo il primo "completato"</h3>
           <ul>
-            <li><code>&#123;&#123; $any(userResource.error()).message &#125;&#125;</code> → meglio <code>(userResource.error() as Error).message</code>: <code>$any</code> spegne il type-checking.</li>
+            <li>l'interpolazione con <code>$any(userResource.error())</code> per leggere
+              <code>.message</code> non era solo un nit stilistico: a runtime causava un
+              <code>TypeError: Cannot read properties of
+              undefined (reading 'message')</code>, perché <code>error()</code> è tipizzato
+              <code>Error | undefined</code> e può risultare <code>undefined</code> anche dentro il
+              ramo che lo controlla. <code>$any()</code> aveva disattivato l'unico avviso
+              (l'errore di compilazione TypeScript) che avrebbe segnalato l'accesso non sicuro.
+              In un'app <strong>zoneless</strong>, un errore non gestito durante il render blocca
+              l'intero ciclo di change detection: da qui bottoni "morti" e tab bloccate, non solo
+              il singolo binding rotto. Corretto con <code>userResource.error()?.message</code>.</li>
             <li><code>loader: async (&#123;params&#125;) =&gt; &#123; return fakeFetchUser(...) &#125;</code> → l'<code>async</code> è ridondante, <code>fakeFetchUser</code> ritorna già una Promise.</li>
             <li><code>;</code> mancanti.</li>
           </ul>
@@ -119,7 +128,7 @@ export function fakeFetchUser(id: number): Promise<User> {
         @if (userResource.isLoading()) {
           <p>Carico…</p>
         } @else if (userResource.error()) {
-          <p>{{ $any(userResource.error()).message }}</p>
+          <p>{{ userResource.error()?.message }}</p>
         } @else if (userResource.hasValue()) {
           <h3>{{ userResource.value().name }}</h3>
           <p>{{ userResource.value().email }}</p>

@@ -5,8 +5,21 @@ import { ExerciseShell } from '../../shared/exercise-shell';
   selector: 'app-ex28-preloading-strategy',
   imports: [ExerciseShell],
   template: `
-    <app-exercise-shell n="28" topic="Router / HTTP" folder="ex28-preloading-strategy"
+    <app-exercise-shell n="28" topic="Router / HTTP" folder="ex28-preloading-strategy" completed
       title="Router: PreloadingStrategy custom">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 3/3</h3>
+        <ul>
+          <li><code>preload(route, load)</code>: controlla <code>route.data?.['preload']</code> e
+            chiama <code>load()</code> solo per le rotte marcate esplicitamente, tornando
+            <code>of(null)</code> per tutte le altre — nessuna rotta viene scaricata in anticipo
+            "per sbaglio".</li>
+          <li>attivata con <code>withPreloading(SelectivePreloadStrategy)</code> in
+            <code>provideRouter(...)</code>: il preload parte da solo dopo il primo ciclo di
+            navigazione, senza altro codice di collegamento.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>

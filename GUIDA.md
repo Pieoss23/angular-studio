@@ -35,16 +35,25 @@ Progetto di studio per imparare le ultime novità di Angular (v21: standalone, z
 | 18 | router: resolver funzionali | ✅ 3/3 (1 correzione) — vedi REPORT/ex18 |
 | 19 | afterRenderEffect + host binding | ✅ 3/3 — vedi REPORT/ex19 |
 | 20 | state management con signal store | ✅ 4/4 — vedi REPORT/ex20 |
-| 21 | pipe custom (pure vs impure) | ⬜ da fare |
-| 22 | direttiva strutturale custom (TemplateRef/ViewContainerRef) | ⬜ da fare |
-| 23 | environment providers + provideAppInitializer | ⬜ da fare |
-| 24 | signal avanzati (untracked/cleanup/equal) | ⬜ da fare |
-| 25 | error handling (ErrorHandler + catchError/retry) | ⬜ da fare |
-| 26 | NgOptimizedImage | ⬜ da fare |
-| 27 | espressioni ICU (plural/select) | ⬜ da fare |
-| 28 | router: PreloadingStrategy custom | ⬜ da fare |
-| 29 | router: TitleStrategy custom | ⬜ da fare |
-| 30 | creazione dinamica di componenti (ViewContainerRef) | ⬜ da fare |
+| 21 | pipe custom (pure vs impure) | ✅ 4/4 — vedi REPORT/ex21 |
+| 22 | direttiva strutturale custom (TemplateRef/ViewContainerRef) | ✅ 4/4 (bonus) — vedi REPORT/ex22 |
+| 23 | environment providers + provideAppInitializer | ✅ 3/3 — vedi REPORT/ex23 |
+| 24 | signal avanzati (untracked/cleanup/equal) | ✅ 4/4 (1 correzione) — vedi REPORT/ex24 |
+| 25 | error handling (ErrorHandler + catchError/retry) | ✅ 3/3 (2 correzioni) — vedi REPORT/ex25 |
+| 26 | NgOptimizedImage | ✅ 3/3 — vedi REPORT/ex26 |
+| 27 | espressioni ICU (plural/select) | ✅ 4/4 (fix infrastruttura) — vedi REPORT/ex27 |
+| 28 | router: PreloadingStrategy custom | ✅ 3/3 — vedi REPORT/ex28 |
+| 29 | router: TitleStrategy custom | ✅ 3/3 — vedi REPORT/ex29 |
+| 30 | creazione dinamica di componenti (ViewContainerRef) | ✅ 4/4 (1 correzione) — vedi REPORT/ex30 |
+
+**Tutti i 30 esercizi completati.** 🎉
+
+## Progetto finale — Libreria ricette
+
+Da `/progetto` in poi: non più esercizi guidati, ma un progetto vero a milestone (M0-M8), che
+mette insieme la maggior parte delle tecniche viste sopra. Consegna completa in
+`src/app/project-recipes/README.md`. Costruisci tu in autonomia, io rivedo milestone per
+milestone come per gli esercizi — vedi quel README per il dettaglio del workflow.
 
 Legenda: ⬜ da fare · 🟡 in corso · ✅ valutato
 

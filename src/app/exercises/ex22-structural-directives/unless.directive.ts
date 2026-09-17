@@ -14,6 +14,16 @@ export class UnlessDirective {
     private readonly templateRef: TemplateRef<unknown>,
     private readonly viewContainerRef: ViewContainerRef,
   ) {
+    effect(() => {
+      const hide = this.appUnless();
+      if(!hide && !this.hasView) {
+        this.viewContainerRef.createEmbeddedView(this.templateRef);
+        this.hasView = true;
+      } else if (hide && this.hasView) {
+        this.viewContainerRef.clear();
+        this.hasView = false;
+      }
+    })
     // TODO(22.1): in un effect(), leggi this.appUnless() e:
     //  - se FALSY e la vista non è ancora inserita (!this.hasView):
     //    this.viewContainerRef.createEmbeddedView(this.templateRef); this.hasView = true;

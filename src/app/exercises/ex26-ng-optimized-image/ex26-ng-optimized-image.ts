@@ -1,12 +1,26 @@
 import { Component } from '@angular/core';
 import { ExerciseShell } from '../../shared/exercise-shell';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-ex26-ng-optimized-image',
-  imports: [ExerciseShell],
+  imports: [ExerciseShell, NgOptimizedImage],
   template: `
-    <app-exercise-shell n="26" topic="Performance" folder="ex26-ng-optimized-image"
+    <app-exercise-shell n="26" topic="Performance" folder="ex26-ng-optimized-image" completed
       title="NgOptimizedImage: immagini performanti senza sforzo">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 3/3</h3>
+        <ul>
+          <li><code>ngSrc</code>/<code>[ngSrc]</code> al posto di <code>src</code>, con
+            <code>NgOptimizedImage</code> negli <code>imports</code>: <code>width</code>/
+            <code>height</code> obbligatori su ogni immagine, <code>priority</code> solo
+            sull'hero (LCP), le miniature restano <code>loading="lazy"</code> di default.</li>
+          <li>il warning <code>NG02956</code> (preconnect mancante) visto in console è un
+            suggerimento di performance, non un errore bloccante — legato al dominio esterno
+            delle immagini di test, non ai criteri dell'esercizio.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>
@@ -80,7 +94,7 @@ import { ExerciseShell } from '../../shared/exercise-shell';
       <div class="card">
         <p class="hint">hero (above-the-fold, priority)</p>
         <!-- TODO: ngSrc + width + height + priority -->
-        <img src="https://picsum.photos/id/1015/800/500" alt="paesaggio hero" style="max-width: 100%; border-radius: 8px;" />
+        <img ngSrc="https://picsum.photos/id/1015/800/500" width="800" height="500" alt="paesaggio hero" style="max-width: 100%; border-radius: 8px;" priority />
       </div>
 
       <div class="card">
@@ -88,7 +102,7 @@ import { ExerciseShell } from '../../shared/exercise-shell';
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
           @for (id of thumbIds; track id) {
             <!-- TODO: ngSrc + width + height (niente priority) -->
-            <img [src]="'https://picsum.photos/id/' + id + '/200/150'" alt="miniatura" style="border-radius: 6px;" />
+            <img [ngSrc]="'https://picsum.photos/id/' + id + '/200/150'" alt="miniatura" style="border-radius: 6px;" height="150" width="200" />
           }
         </div>
       </div>
@@ -96,5 +110,5 @@ import { ExerciseShell } from '../../shared/exercise-shell';
   `,
 })
 export class Ex26NgOptimizedImage {
-  protected readonly thumbIds = [1016, 1018, 1019, 1020, 1021];
+  protected readonly thumbIds = [1016, 1018, 1019, 1020, 1021, 1022];
 }

@@ -196,6 +196,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Pipe custom: pure vs impure',
     topic: 'Template',
     summary: 'Pipe pura per il troncamento di stringhe, pipe impura per un orologio live.',
+    done: true,
   },
   {
     id: 'ex22',
@@ -204,6 +205,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Direttiva strutturale custom: TemplateRef + ViewContainerRef',
     topic: 'Componenti',
     summary: '*appUnless e *appRepeat scritte da zero, come funziona *ngIf sotto il cofano.',
+    done: true,
   },
   {
     id: 'ex23',
@@ -212,6 +214,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Environment providers: provideXxx() e provideAppInitializer',
     topic: 'Architettura',
     summary: 'Funzione provideAnalytics() in stile provideRouter/provideHttpClient.',
+    done: true,
   },
   {
     id: 'ex24',
@@ -220,6 +223,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Signal avanzati: untracked(), effect cleanup, equal custom',
     topic: 'Reattività',
     summary: 'Debounce via cleanup, lettura non tracciata, comparatore equal personalizzato.',
+    done: true,
   },
   {
     id: 'ex25',
@@ -228,6 +232,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Error handling: ErrorHandler globale + catchError/retry',
     topic: 'Architettura',
     summary: 'Rete di sicurezza globale vs gestione puntuale degli errori HTTP.',
+    done: true,
   },
   {
     id: 'ex26',
@@ -236,6 +241,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'NgOptimizedImage: immagini performanti senza sforzo',
     topic: 'Performance',
     summary: 'ngSrc, priority, dimensioni obbligatorie per evitare layout shift.',
+    done: true,
   },
   {
     id: 'ex27',
@@ -244,6 +250,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Espressioni ICU: plural e select nel template',
     topic: 'Template',
     summary: 'Testo condizionale su un valore, compilato client-side senza estrazione i18n.',
+    done: true,
   },
   {
     id: 'ex28',
@@ -252,6 +259,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Router: PreloadingStrategy custom',
     topic: 'Router / HTTP',
     summary: 'Precaricamento selettivo dei chunk lazy in base a route data.',
+    done: true,
   },
   {
     id: 'ex29',
@@ -260,6 +268,7 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Router: TitleStrategy custom, titoli di pagina dinamici',
     topic: 'Router / HTTP',
     summary: 'Suffisso automatico sul <title> del documento ad ogni navigazione.',
+    done: true,
   },
   {
     id: 'ex30',
@@ -268,5 +277,6 @@ export const EXERCISES: ExerciseMeta[] = [
     title: 'Creazione dinamica di componenti: ViewContainerRef.createComponent()',
     topic: 'Componenti',
     summary: 'Un mini servizio di toast creato imperativamente, non dal template.',
+    done: true,
   },
 ];

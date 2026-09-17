@@ -6,8 +6,21 @@ import { ExerciseShell } from '../../shared/exercise-shell';
   selector: 'app-ex29-title-strategy',
   imports: [ExerciseShell, RouterLink],
   template: `
-    <app-exercise-shell n="29" topic="Router / HTTP" folder="ex29-title-strategy"
+    <app-exercise-shell n="29" topic="Router / HTTP" folder="ex29-title-strategy" completed
       title="Router: TitleStrategy custom, titoli di pagina dinamici">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 3/3</h3>
+        <ul>
+          <li><code>this.buildTitle(snapshot)</code> (ereditato) ricava il <code>title</code>
+            della rotta attiva più profonda; se presente e diverso dal suffisso, viene composto
+            col suffisso appeso, altrimenti si usa solo il suffisso — evitando la doppia
+            ripetizione sulla home.</li>
+          <li><code>inject(Title).setTitle(...)</code> è l'unico punto che tocca davvero il
+            <code>&lt;title&gt;</code> nel <code>&lt;head&gt;</code>: senza quella chiamata il tab
+            del browser resterebbe fermo al titolo della pagina precedente.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>

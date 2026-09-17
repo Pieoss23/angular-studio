@@ -7,8 +7,30 @@ import { ToastService } from './toast.service';
   selector: 'app-ex30-dynamic-components',
   imports: [ExerciseShell, ToastHost],
   template: `
-    <app-exercise-shell n="30" topic="Componenti" folder="ex30-dynamic-components"
+    <app-exercise-shell n="30" topic="Componenti" folder="ex30-dynamic-components" completed
       title="Creazione dinamica di componenti: ViewContainerRef.createComponent()">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 4/4 (1 correzione in review)</h3>
+        <ul>
+          <li><code>ToastHost</code> registra il proprio <code>ViewContainerRef</code> in
+            <code>ToastService</code> dentro <code>afterNextRender</code>: un
+            <code>viewChild</code> non è ancora popolato nel constructor, serve aspettare il
+            primo render.</li>
+          <li><code>host.createComponent(ToastItem)</code> + <code>ref.setInput(...)</code> per
+            configurare l'istanza, <code>ref.instance.dismissed.subscribe(...)</code> per
+            ascoltare l'output senza passare dal template.</li>
+        </ul>
+        <h3>Corretto in review</h3>
+        <ul>
+          <li><code>const remove = () =&gt; ref.destroy;</code> — mancava la chiamata al metodo
+            (<code>ref.destroy</code> senza parentesi si limita a leggere il riferimento alla
+            funzione, senza eseguirla). Né la chiusura automatica dopo il timeout né il click su
+            "chiudi" funzionavano, perché passavano entrambi da questa stessa funzione rotta.
+            TypeScript non lo segnalava: è sintassi valida, solo logicamente no-op. Corretto in
+            <code>() =&gt; ref.destroy()</code>.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>

@@ -14,5 +14,8 @@ export class AppErrorHandler implements ErrorHandler {
   //    il comportamento di default, aggiungiti sopra
   //  - chiamare this.log.log(...) con un messaggio leggibile, es.
   //    error instanceof Error ? error.message : String(error)
-  handleError(error: unknown): void {}
+  handleError(error: unknown): void {
+    console.error(error)
+    this.log.log(error instanceof Error ? error.message : String(error))
+  }
 }

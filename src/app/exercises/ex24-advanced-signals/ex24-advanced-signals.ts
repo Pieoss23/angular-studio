@@ -10,8 +10,30 @@ interface Filters {
   selector: 'app-ex24-advanced-signals',
   imports: [ExerciseShell],
   template: `
-    <app-exercise-shell n="24" topic="Reattività" folder="ex24-advanced-signals"
+    <app-exercise-shell n="24" topic="Reattività" folder="ex24-advanced-signals" completed
       title="Signal avanzati: untracked(), effect cleanup, equal custom">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 4/4 (1 correzione in review)</h3>
+        <ul>
+          <li><code>effect((onCleanup) =&gt; ...)</code>: il <code>setTimeout</code> di ogni
+            digitazione viene annullato da <code>onCleanup</code> prima che l'effect riparta con
+            la query successiva — solo l'ultimo timer arriva davvero a loggare.</li>
+          <li><code>untracked(() =&gt; this.verbose())</code>: legge il toggle senza registrarlo
+            come dipendenza, così cambiarlo da solo non fa ripartire l'elaborazione.</li>
+          <li><code>equal</code> custom su <code>filters</code>: confronta i campi invece del
+            riferimento, quindi <code>.set()</code> con valori identici (anche in un oggetto
+            nuovo) non fa scattare l'effect a valle.</li>
+        </ul>
+        <h3>Corretto in review</h3>
+        <ul>
+          <li>il comparatore <code>equal</code> era stato aggiunto a un signal <code>filter</code>
+            (singolare) nuovo e scollegato, invece che su <code>filters</code> — quello
+            effettivamente usato nel template e nel secondo <code>effect()</code>. Spostato
+            l'opzione sulla dichiarazione giusta, rimosso il campo duplicato.</li>
+          <li>rimosso un import inutilizzato (<code>single</code> da <code>rxjs</code>).</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>
@@ -117,19 +139,26 @@ export class Ex24AdvancedSignals {
   protected readonly log = signal<string[]>([]);
 
   // TODO(24.3): aggiungi { equal: (a, b) => a.status === b.status && a.tag === b.tag }
-  protected readonly filters = signal<Filters>({ status: 'active', tag: 'a' });
-  protected readonly updateCount = signal(0);
+  protected readonly filters = signal<Filters>(
+    { status: 'active', tag: 'a' },
+    { equal: (a, b) => a.status === b.status && a.tag === b.tag }
+  );
 
+  protected readonly updateCount = signal(0);
   constructor() {
-    effect(() => {
+    effect((onCleanup) => {
       // TODO(24.1 - cleanup) / TODO(24.2 - untracked): riscrivi questo effect
       // usando la firma effect((onCleanup) => { ... }) e untracked() per
       // leggere this.verbose() senza tracciarlo. Vedi consegna.
       const q = this.query();
-      const verbose = this.verbose();
-      if (verbose) this.log.update((l) => [...l, `(verbose) query cambiata: "${q}"`]);
-      this.log.update((l) => [...l, `elaboro: "${q}"`]);
-    });
+      const verbose = untracked(() => this.verbose());
+      const id = setTimeout(() => {
+        if (verbose) this.log.update((l) => [...l, `(verbose) query cambiata: "${q}"`]);
+        this.log.update((l) => [...l, `elaboro: "${q}"`]);
+      }, 500);
+      onCleanup(() => clearTimeout(id))
+    })
+
 
     effect(() => {
       this.filters();
@@ -144,4 +173,6 @@ export class Ex24AdvancedSignals {
   protected setDifferentFilters(): void {
     this.filters.update((f) => ({ ...f, tag: f.tag === 'a' ? 'b' : 'a' }));
   }
+
+
 }

@@ -13,6 +13,16 @@ export const ANALYTICS_CONFIG = new InjectionToken<AnalyticsConfig>('ANALYTICS_C
 //     — questa callback gira PRIMA che l'app finisca il bootstrap, quindi
 //     appare in console prima di qualunque log dei componenti.
 // Suggerimento: makeEnvironmentProviders([...]) prende un array di provider.
+
+
+
 export function provideAnalytics(config: AnalyticsConfig): EnvironmentProviders {
-  return makeEnvironmentProviders([]);
+
+
+  return makeEnvironmentProviders([
+    {provide: ANALYTICS_CONFIG, useValue: config},
+    provideAppInitializer(() => {
+      console.log(`[analytics] inizializzato per ${config.appId}`)
+    })
+  ]);
 }

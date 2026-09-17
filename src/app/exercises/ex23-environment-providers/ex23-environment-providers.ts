@@ -6,8 +6,22 @@ import { AnalyticsService } from './analytics.service';
   selector: 'app-ex23-environment-providers',
   imports: [ExerciseShell],
   template: `
-    <app-exercise-shell n="23" topic="Architettura" folder="ex23-environment-providers"
+    <app-exercise-shell n="23" topic="Architettura" folder="ex23-environment-providers" completed
       title="Environment providers: provideXxx() e provideAppInitializer">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 3/3</h3>
+        <ul>
+          <li><code>makeEnvironmentProviders([...])</code> impacchetta un token
+            (<code>&#123; provide: ANALYTICS_CONFIG, useValue: config &#125;</code>) e un
+            <code>provideAppInitializer(...)</code> in un unico valore da mettere in
+            <code>providers</code>, esattamente come fanno <code>provideRouter</code>/
+            <code>provideHttpClient</code>.</li>
+          <li><code>provideAppInitializer</code> gira prima del bootstrap: il log
+            <code>[analytics] inizializzato...</code> compare in console prima di qualunque log
+            dei componenti, verificabile ricaricando la pagina.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>

@@ -8,8 +8,21 @@ import { ElapsedPurePipe } from './elapsed-pure.pipe';
   selector: 'app-ex21-custom-pipes',
   imports: [ExerciseShell, TruncatePipe, ElapsedPipe, ElapsedPurePipe],
   template: `
-    <app-exercise-shell n="21" topic="Template" folder="ex21-custom-pipes"
+    <app-exercise-shell n="21" topic="Template" folder="ex21-custom-pipes" completed
       title="Pipe custom: pure vs impure">
+
+      <div imparato>
+        <h3>Esito: ✅ completato — 4/4</h3>
+        <ul>
+          <li><code>truncate</code>: <code>value.length &gt; limit</code> per decidere se tagliare,
+            <code>value.slice(0, limit)</code> per i primi caratteri, suffisso di troncamento
+            appeso solo quando serve — stringhe più corte del limite restano intatte.</li>
+          <li>vista in azione la differenza pura/impura: <code>elapsedPure</code> resta congelato
+            al primo render, <code>elapsed</code> (con <code>pure: false</code>) si aggiorna ad
+            ogni tick perché ricalcolato ad ogni ciclo di change detection, non solo quando cambia
+            il suo input.</li>
+        </ul>
+      </div>
 
       <div consegna>
         <h3>Argomento</h3>
