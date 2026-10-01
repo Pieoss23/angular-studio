@@ -15,4 +15,5 @@ export interface Recipe {
   category: 'primo' | 'secondo' | 'dolce' | 'antipasto' | 'contorno';
   ingredients: Ingredient[];
   steps: string[];
+  isFavorite?: boolean;
 }
