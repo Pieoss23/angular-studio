@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './exercises/ex10-guards-interceptors/auth.guard';
 import { projectResolver } from './exercises/ex18-router-resolvers/project.resolver';
+import { resolve } from '@angular/compiler-cli/private/localize';
 
 export const routes: Routes = [
   {
@@ -206,10 +207,12 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'progetto-ricette',
+    path: 'progetto',
     loadChildren: () =>
       import('./project-recipes/project-recipes.routes').then((m) => m.PROJECT_RECIPES_ROUTES),
   },
-
+  // {path: 'ricette/:id', loadComponent: () =>
+  //   resolve: {recipe: recipeResolver,}
+  // },
   { path: '**', redirectTo: '' },
 ];
