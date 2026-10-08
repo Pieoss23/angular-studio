@@ -1,5 +1,7 @@
-import { Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, Routes } from '@angular/router';
+import { inject } from '@angular/core';
 import { recipeResolver } from './recipe/recipe.resolver';
+import { RecipeStore } from './store/recipe-store';
 
 // Rotte del progetto, isolate da app.routes.ts (che resta dedicato agli
 // esercizi). Aggiungi qui le nuove rotte via via che avanzi nelle milestone
@@ -17,6 +19,11 @@ export const PROJECT_RECIPES_ROUTES: Routes = [
   {
     path: 'ricette/:id',
     resolve: { recipe: recipeResolver },
+    title: (route: ActivatedRouteSnapshot) => {
+      const id = route.paramMap.get('id');
+      const recipe = id ? inject(RecipeStore).recipes().find((r) => r.id === id) : undefined;
+      return recipe?.title ?? 'Ricetta';
+    },
     loadComponent: () => import('./recipe/recipe-detail').then((m) => m.RecipeDetail),
   },
 
