@@ -35,7 +35,7 @@ const MILESTONES: Milestone[] = [
     title: 'M3 — Dettaglio ricetta',
     summary: 'Rotta /progetto/ricette/:id con resolver, componente Card con content projection, ICU per porzioni/ingredienti.',
     techniques: ['router resolver', 'content projection', 'ICU', 'title strategy'],
-    done: false,
+    done: true,
   },
   {
     id: 'm4',

@@ -31,4 +31,9 @@ export class RecipeStore {
     }
   }
 
+  addRecipe(recipe: Omit<Recipe, 'id'>): void {
+    const id = crypto.randomUUID();
+    this._recipes.set([...this._recipes(), { ...recipe, id }])
+  }
+
 }

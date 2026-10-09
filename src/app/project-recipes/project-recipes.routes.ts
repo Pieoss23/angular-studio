@@ -17,6 +17,11 @@ export const PROJECT_RECIPES_ROUTES: Routes = [
     loadComponent: () => import('./recipe/recipe-list').then((m) => m.RecipeList)
   },
   {
+    path: 'ricette/nuova',
+    loadComponent: () => import('./recipe/recipe-form').then((m) => m.RecipeForm),
+    title: 'Nuova ricetta',
+  },
+  {
     path: 'ricette/:id',
     resolve: { recipe: recipeResolver },
     title: (route: ActivatedRouteSnapshot) => {
